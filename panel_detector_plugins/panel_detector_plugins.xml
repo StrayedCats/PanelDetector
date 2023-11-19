@@ -1,0 +1,5 @@
+<library path="panel_detector_plugins">
+    <class type="panel_detector_plugins::PublishCenter" base_class_type="panel_detector_base::Detector">
+        <description>publish image center example</description>
+    </class>
+</library>
