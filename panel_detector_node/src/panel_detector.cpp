@@ -20,6 +20,8 @@ PanelDetectorNode::PanelDetectorNode(const rclcpp::NodeOptions & options)
     printf("The plugin failed to load for some reason. Error: %s\n", ex.what());
   }
 
+  this->pose_pub_ = this->create_publisher<vision_msgs::msg::Detection2DArray>(
+    "positions", 1);
   this->image_sub_ = this->create_subscription<sensor_msgs::msg::Image>(
     "image_raw", 1, std::bind(&PanelDetectorNode::image_callback, this, std::placeholders::_1));
 }
@@ -33,6 +35,7 @@ void PanelDetectorNode::image_callback(const sensor_msgs::msg::Image::SharedPtr 
       bboxes.detections[i].bbox.center.position.y <<
       std::endl;
   }
+  this->pose_pub_->publish(bboxes);
 }
 } // namespace panel_detector_node
 
