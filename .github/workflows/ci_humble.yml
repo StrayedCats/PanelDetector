@@ -31,5 +31,9 @@ jobs:
           target-ros2-distro: ${{ matrix.ros_distribution }}
           import-token: ${{ secrets.GITHUB_TOKEN }}
           package-name: |
-            joy_rviz_plugin
+            panel_detector_base
+            panel_detector_node
+            panel_detector_param
+            panel_detector_plugins
+            panel_detector
           vcs-repo-file-url: build_depends.repos
