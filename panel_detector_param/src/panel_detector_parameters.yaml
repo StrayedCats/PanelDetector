@@ -3,9 +3,4 @@ panel_detector_parameters:
     type: string
     description: "load target plugin"
     default_value: "panel_detector_plugins::PublishCenter"
-  kernel_size:
-    type: int
-    description: "kernel size for morphological operations"
-    default_value: 5
-    validation:
-      one_of<>: [[3, 5, 7, 9, 11, 13, 15, 17, 19, 21]]
+

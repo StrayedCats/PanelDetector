@@ -12,10 +12,10 @@ PanelDetectorNode::PanelDetectorNode(const rclcpp::NodeOptions & options)
   const auto params = this->param_listener_->get_params();
 
   try {
-    std::cout << "params.load_target_plugin: " << params.load_target_plugin << std::endl;
     this->detector_ = this->detection_loader_.createSharedInstance(
-      "panel_detector_plugins::PublishCenter");
+      params.load_target_plugin);
     this->detector_->init(*this->param_listener_);
+    std::cout << "params.load_target_plugin: " << params.load_target_plugin << std::endl;
   } catch (pluginlib::PluginlibException & ex) {
     printf("The plugin failed to load for some reason. Error: %s\n", ex.what());
   }
@@ -28,8 +28,9 @@ void PanelDetectorNode::image_callback(const sensor_msgs::msg::Image::SharedPtr 
 {
   vision_msgs::msg::Detection2DArray bboxes =
     this->detector_->detect(cv_bridge::toCvShare(msg, "bgr8")->image);
-  for (auto bbox : bboxes.detections) {
-    std::cout << "bbox: " << bbox.bbox.center.position.x << ", " << bbox.bbox.center.position.y <<
+  for (size_t i = 0; i < bboxes.detections.size(); i++) {
+    std::cout << "bboxes [" << i << "]: " << bboxes.detections[i].bbox.center.position.x << ", " <<
+      bboxes.detections[i].bbox.center.position.y <<
       std::endl;
   }
 }
