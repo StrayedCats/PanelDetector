@@ -5,7 +5,7 @@
 #include <panel_detector_plugins/publish_center.hpp>
 #include <rclcpp/rclcpp.hpp>
 
-class TestErrorMsgGenerator : public ::testing::Test
+class TestPanelDetectorClass : public ::testing::Test
 {
 protected:
   std::unique_ptr<panel_detector_plugins::PublishCenter> target_class_;
@@ -26,7 +26,7 @@ protected:
   }
 };
 
-TEST_F(TestErrorMsgGenerator, test_default)
+TEST_F(TestPanelDetectorClass, test_default)
 {
   auto result = this->target_class_->detect(cv::Mat(480, 640, CV_8UC3));
   EXPECT_EQ(result.detections[0].bbox.center.position.x, 320);
