@@ -19,6 +19,16 @@ if(BUILD_TESTING)
   set(ament_cmake_copyright_FOUND TRUE)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
+  find_package(ament_cmake_gtest REQUIRED)
+  find_package(ament_cmake_gmock REQUIRED)
+
+  set(TEST_TARGETS
+    test_publish_center)
+  foreach(TARGET ${TEST_TARGETS})
+    ament_add_gtest(${TARGET} test/src/${TARGET}.cpp)
+    target_link_libraries(${TARGET} ${PROJECT_NAME} ${OpenCV_LIBRARIES})
+  endforeach()
 endif()
 
 pluginlib_export_plugin_description_file(panel_detector_base panel_detector_plugins.xml)
