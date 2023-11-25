@@ -9,8 +9,9 @@ find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 find_package(OpenCV REQUIRED)
 
+file(GLOB_RECURSE SRCS src/*.cpp)
 ament_auto_add_library(panel_detector_plugins SHARED
-  src/publish_center.cpp
+  ${SRCS}
 )
 ament_target_dependencies(${PROJECT_NAME} OpenCV)
 
