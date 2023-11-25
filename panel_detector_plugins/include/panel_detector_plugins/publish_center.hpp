@@ -1,3 +1,5 @@
+#pragma once
+
 #include <panel_detector_base/panel_detector_base.hpp>
 #include <panel_detector_param/panel_detector_param.hpp>
 #include <vision_msgs/msg/detection2_d_array.hpp>
