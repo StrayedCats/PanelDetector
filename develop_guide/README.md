@@ -58,7 +58,13 @@
 
 フォルダ構成はつぎの通りです。
 
-<!-- TODO: 画像 -->
+<img width="542" alt="dirs" src="https://github.com/StrayedCats/PanelDetector/assets/67567093/c3a038e1-d480-4bdb-a836-3bde7ec2d456">
+
+ファイルとして作成するのは、 `panel_detector_plugins` 内のヘッダーファイルとソースコードファイルのみ（橙色で囲っている部分）ですが、その登録先（青で囲っている部分）については新規作成した内容に応じて適宜修正していきます。
+
+ヘッダーファイルについては、事前に作成されている`_base.hpp`を継承します。
+
+テスト内容は、`_plugin.cpp`(ここでは`publish_center.cpp`）をテストします。
 
 <br>
 
