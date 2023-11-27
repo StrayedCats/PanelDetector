@@ -2,7 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include <panel_detector_base/panel_detector_base.hpp>
 #include <panel_detector_param/panel_detector_param.hpp>
-#include <panel_detector_plugins/publish_center.hpp>
+#include <panel_detector_plugins/publish_center_plugin.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 class TestPanelDetectorClass : public ::testing::Test

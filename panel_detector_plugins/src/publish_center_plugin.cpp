@@ -1,4 +1,4 @@
-#include "panel_detector_plugins/publish_center.hpp"
+#include "panel_detector_plugins/publish_center_plugin.hpp"
 
 namespace panel_detector_plugins
 {

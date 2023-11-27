@@ -25,7 +25,7 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gmock REQUIRED)
 
   set(TEST_TARGETS
-    test_publish_center)
+    test_publish_center_plugin)
   foreach(TARGET ${TEST_TARGETS})
     ament_add_gtest(${TARGET} test/src/${TARGET}.cpp)
     target_link_libraries(${TARGET} ${PROJECT_NAME} ${OpenCV_LIBRARIES})
