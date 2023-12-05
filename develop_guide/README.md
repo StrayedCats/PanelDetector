@@ -54,13 +54,13 @@
 
 ## フォルダ構成
 
-ここでは、PanelDetectorのフォルダ構成を例に説明します。
+ここでは、Detector2dのフォルダ構成を例に説明します。
 
 フォルダ構成はつぎの通りです。
 
-<img width="542" alt="dirs" src="https://github.com/StrayedCats/PanelDetector/assets/67567093/c3a038e1-d480-4bdb-a836-3bde7ec2d456">
+![](./dev_guide.png)
 
-ファイルとして作成するのは、 `panel_detector_plugins` 内のヘッダーファイルとソースコードファイルのみ（橙色で囲っている部分）ですが、その登録先（青で囲っている部分）については新規作成した内容に応じて適宜修正していきます。
+ファイルとして作成するのは、 `detector2d_plugins` 内のヘッダーファイルとソースコードファイルのみ（橙色で囲っている部分）ですが、その登録先（青で囲っている部分）については新規作成した内容に応じて適宜修正していきます。
 
 ヘッダーファイルについては、事前に作成されている`_base.hpp`を継承します。
 
@@ -70,19 +70,19 @@
 
 publish_centerの場合、新しく追加するファイルはつぎの通りです。
 
-- `panel_detector/panel_detector_plugins/src/publish_center.cpp` : ソースコード
-- `panel_detector/panel_detector_plugins/include/panel_detector_plugins/publish_center.hpp` : ヘッダファイル
-  - `panel_detector_base.hpp` を継承します。
+- `detector2d/detector2d_plugins/src/publish_center.cpp` : ソースコード
+- `detector2d/detector2d_plugins/include/detector2d_plugins/publish_center.hpp` : ヘッダファイル
+  - `detector2d_base.hpp` を継承します。
 
 プラグインを追加するため、次のファイルを追加で記述します。（記述しないとコンパイルエラーになります。）
 
-- `panel_detector/panel_detector_plugins/panel_detector_plugins.xml`
-- `panel_detector/panel_detector_plugins/CMakeLists.txt`
+- `detector2d/detector2d_plugins/detector2d_plugins.xml`
+- `detector2d/detector2d_plugins/CMakeLists.txt`
 
 必要に応じて次のファイルを追加で記述します。
 
-- `panel_detector/panel_detector_plugins/package.xml`
-- `panel_detector/build_depends.repos`
+- `detector2d/detector2d_plugins/package.xml`
+- `detector2d/build_depends.repos`
 
 
 <br>

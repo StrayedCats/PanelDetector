@@ -1,5 +1,5 @@
-# PanelDetector
-Panel detection node for CoRE-1 2024
+# Detector2d
+Detection 2d node for CoRE-1 2024
 
 ## Node Structure
 
@@ -13,22 +13,22 @@ Panel detection node for CoRE-1 2024
 
 | Topic Name | Type | Description |
 | --- | --- | --- |
-| positions | geometry_msgs/msg/Detection2DArray | Detected panel poses |
+| positions | geometry_msgs/msg/Detection2DArray | Detected 2d poses |
 
 ### Class Diagram
 
 ```mermaid
 ---
-title: Panel Detector Plugin hierarchy
+title: Detector2d Plugin hierarchy
 ---
 classDiagram
-    PanelDetectorNode <-- DetectorPluginA : load as dll
-    PanelDetectorNode <-- DetectorPluginB : load as dll
+    Detector2dNode <-- DetectorPluginA : load as dll
+    Detector2dNode <-- DetectorPluginB : load as dll
     DetectorPluginA <|-- DetectorBase : include
     DetectorPluginB <|-- DetectorBase : include
-    PanelDetectorNode <|-- DetectorBase : include
-    PanelDetectorNode: params
-    PanelDetectorNode: image_callback(Image)
+    Detector2dNode <|-- DetectorBase : include
+    Detector2dNode: params
+    Detector2dNode: image_callback(Image)
     class DetectorPluginA{
         filter_kernel_param_a
         init(params)

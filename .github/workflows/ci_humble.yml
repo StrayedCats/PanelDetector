@@ -31,9 +31,9 @@ jobs:
           target-ros2-distro: ${{ matrix.ros_distribution }}
           import-token: ${{ secrets.GITHUB_TOKEN }}
           package-name: |
-            panel_detector_base
-            panel_detector_node
-            panel_detector_param
-            panel_detector_plugins
-            panel_detector
+            detector2d_base
+            detector2d_node
+            detector2d_param
+            detector2d_plugins
+            detector2d
           vcs-repo-file-url: build_depends.repos

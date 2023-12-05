@@ -1,6 +1,0 @@
-panel_detector_parameters:
-  load_target_plugin:
-    type: string
-    description: "load target plugin"
-    default_value: "panel_detector_plugins::PublishCenter"
-
