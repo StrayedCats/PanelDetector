@@ -56,7 +56,9 @@ Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
   return pose;
 }
 
-void PanelSimpleDetector::draw(const cv::Mat & image, const CenterPoints & center_points, const std::string & window_name)
+void PanelSimpleDetector::draw(
+  const cv::Mat & image, const CenterPoints & center_points,
+  const std::string & window_name)
 {
   cv::Mat3b canvas = image.clone();
   for (auto center_point : center_points) {
@@ -76,7 +78,9 @@ CenterPoints PanelSimpleDetector::get_center_points(const Contours & contours)
   return center_points;
 }
 
-CenterPoints PanelSimpleDetector::merge_center_points(const CenterPoints & center_points, const int & width)
+CenterPoints PanelSimpleDetector::merge_center_points(
+  const CenterPoints & center_points,
+  const int & width)
 {
   CenterPoints merged_center_points;
   uint32_t threshold = width * 0.05;
