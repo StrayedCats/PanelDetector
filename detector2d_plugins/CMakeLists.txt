@@ -25,7 +25,8 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gmock REQUIRED)
 
   set(TEST_TARGETS
-    test_publish_center_plugin)
+    test_publish_center_plugin
+    test_panel_simple_detector_plugin)
   foreach(TARGET ${TEST_TARGETS})
     ament_add_gtest(${TARGET} test/src/${TARGET}.cpp)
     target_link_libraries(${TARGET} ${PROJECT_NAME} ${OpenCV_LIBRARIES})
@@ -35,4 +36,6 @@ endif()
 pluginlib_export_plugin_description_file(detector2d_base detector2d_plugins.xml)
 
 include_directories(include)
-ament_auto_package()
+ament_auto_package(INSTALL_TO_SHARE
+  test/test_data
+)
