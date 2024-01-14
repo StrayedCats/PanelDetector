@@ -12,3 +12,13 @@ detector2d_parameters:
       type: string
       description: "panel color"
       default_value: "red"
+  yolox_trt_plugin:
+    model_path:
+      type: string
+      description: "model path"
+      default_value: "./src/yolox_trt/weight/yolox_tiny.trt"
+      read_only: true
+    imshow_isshow:
+      type: bool
+      description: "imshow isshow"
+      default_value: false
