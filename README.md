@@ -1,6 +1,20 @@
 # Detector2d
 Detection 2d node for CoRE-1 2024
 
+## test
+
+```bash
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/StrayedCats/detector2d.git -b humble
+
+cd ..
+colcon build
+
+source install/setup.bash
+ros2 run detector2d_node detector2d_node_exec --ros-args -p load_target_plugin:=detector2d_plugins::PublishCenter
+```
+
 ## Node Structure
 
 ### Topic (Subscribe)

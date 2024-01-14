@@ -49,6 +49,7 @@ void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg
       bboxes.detections[i].bbox.center.position.y <<
       std::endl;
   }
+  bboxes.header = msg->header;
   this->pose_pub_->publish(bboxes);
 }
 } // namespace detector2d_node
