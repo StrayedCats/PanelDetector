@@ -42,6 +42,13 @@ Detector2dNode::Detector2dNode(const rclcpp::NodeOptions & options)
 
 void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg)
 {
+  try {
+    cv::Mat image = cv_bridge::toCvShare(msg, "bgr8")->image;
+  } catch (std::exception & e) {
+    RCLCPP_ERROR(this->get_logger(), "exception: %s", e.what());
+    return;
+  }
+
   vision_msgs::msg::Detection2DArray bboxes =
     this->detector_->detect(cv_bridge::toCvShare(msg, "bgr8")->image);
   for (size_t i = 0; i < bboxes.detections.size(); i++) {
