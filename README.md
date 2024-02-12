@@ -1,6 +1,8 @@
 # Detector2d
 Detection 2d node for CoRE-1 2024
 
+<img width="818" alt="スクリーンショット 2024-02-12 12 00 46" src="https://github.com/StrayedCats/detector2d/assets/67567093/ab8d1d5b-2bd8-4ef2-bf53-7f8a91d1ab38">
+
 ## test
 
 ```bash
