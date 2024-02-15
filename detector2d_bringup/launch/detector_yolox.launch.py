@@ -30,11 +30,11 @@ def generate_launch_description():
                 name='detector2d_node',
                 namespace='',
                 parameters=[{
-                    'yolox_trt_plugin.model_path': os.path.expanduser('~') + '/yolox_tiny.trt',
+                    'yolox_trt_plugin.model_path': '/models/yolox_s.trt',
                     'load_target_plugin': 'detector2d_plugins::YoloxTrt'
                 }],
                 remappings=[
-                    ('image_raw', 'color/image_raw')
+                    ('image_raw', 'realsense2_camera/color/image_raw')
                 ]
             ),
             ComposableNode(
@@ -49,9 +49,9 @@ def generate_launch_description():
                 }],
                 remappings=[
                     ('bbox2d', 'positions'),
-                    ('camera_info', 'aligned_depth_to_color/camera_info'),
-                    ('depth', 'aligned_depth_to_color/image_raw'),
-                    ('color', 'color/image_raw')
+                    ('camera_info', 'realsense2_camera/aligned_depth_to_color/camera_info'),
+                    ('depth', 'realsense2_camera/aligned_depth_to_color/image_raw'),
+                    ('color', 'realsense2_camera/color/image_raw')
                 ]
             ),
         ]
