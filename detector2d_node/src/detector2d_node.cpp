@@ -37,7 +37,7 @@ Detector2dNode::Detector2dNode(const rclcpp::NodeOptions & options)
   this->pose_pub_ = this->create_publisher<vision_msgs::msg::Detection2DArray>(
     "positions", 1);
   this->image_sub_ = this->create_subscription<sensor_msgs::msg::Image>(
-    "image_raw", 1, std::bind(&Detector2dNode::image_callback, this, std::placeholders::_1));
+    "image_raw", rclcpp::SensorDataQoS(), std::bind(&Detector2dNode::image_callback, this, std::placeholders::_1));
 }
 
 void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg)
