@@ -17,6 +17,8 @@
 #include <detector2d_base/detector2d_base.hpp>
 #include <detector2d_param/detector2d_param.hpp>
 #include <vision_msgs/msg/detection2_d_array.hpp>
+#include <vision_msgs/msg/object_hypothesis_with_pose.hpp>
+#include "detector2d_base/coco_names.hpp"
 
 #include <memory>
 

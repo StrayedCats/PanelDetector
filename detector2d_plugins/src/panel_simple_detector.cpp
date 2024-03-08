@@ -64,7 +64,12 @@ Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
     detection.bbox.center.position.y = center_point.y;
     detection.bbox.size_x = 10;
     detection.bbox.size_y = 10;
+
     detection.results.resize(1);
+    vision_msgs::msg::ObjectHypothesisWithPose result;
+    result.hypothesis.class_id = detector2d_base::COCO_CLASSES[0];
+    result.hypothesis.score = 1.0;
+    detection.results[0] = result;
     pose.detections.push_back(detection);
   }
   return pose;

@@ -42,6 +42,7 @@ Detector2dNode::Detector2dNode(const rclcpp::NodeOptions & options)
 
 void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg)
 {
+  auto start = std::chrono::system_clock::now();
   try {
     cv::Mat image = cv_bridge::toCvShare(msg, "bgr8")->image;
   } catch (std::exception & e) {
@@ -51,13 +52,16 @@ void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg
 
   vision_msgs::msg::Detection2DArray bboxes =
     this->detector_->detect(cv_bridge::toCvShare(msg, "bgr8")->image);
-  for (size_t i = 0; i < bboxes.detections.size(); i++) {
-    std::cout << "bboxes [" << i << "]: " << bboxes.detections[i].bbox.center.position.x << ", " <<
-      bboxes.detections[i].bbox.center.position.y <<
-      std::endl;
-  }
+  // for (size_t i = 0; i < bboxes.detections.size(); i++) {
+  //   std::cout << "bboxes [" << i << "]: " << bboxes.detections[i].bbox.center.position.x << ", " <<
+  //     bboxes.detections[i].bbox.center.position.y <<
+  //     std::endl;
+  // }
   bboxes.header = msg->header;
   this->pose_pub_->publish(bboxes);
+  auto end = std::chrono::system_clock::now();
+  auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+  RCLCPP_INFO(this->get_logger(), "elapsed time: %d ms", elapsed);
 }
 } // namespace detector2d_node
 
