@@ -31,7 +31,7 @@ Detector2dNode::Detector2dNode(const rclcpp::NodeOptions & options)
     this->detector_->init(*this->param_listener_);
     std::cout << "params.load_target_plugin: " << params.load_target_plugin << std::endl;
   } catch (pluginlib::PluginlibException & ex) {
-    printf("The plugin failed to load for some reason. Error: %s\n", ex.what());
+    RCLCPP_ERROR(this->get_logger(), "The plugin failed to load for some reason. Error: %s", ex.what());
   }
 
   this->pose_pub_ = this->create_publisher<vision_msgs::msg::Detection2DArray>(
@@ -51,11 +51,6 @@ void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg
 
   vision_msgs::msg::Detection2DArray bboxes =
     this->detector_->detect(cv_bridge::toCvShare(msg, "bgr8")->image);
-  for (size_t i = 0; i < bboxes.detections.size(); i++) {
-    std::cout << "bboxes [" << i << "]: " << bboxes.detections[i].bbox.center.position.x << ", " <<
-      bboxes.detections[i].bbox.center.position.y <<
-      std::endl;
-  }
   bboxes.header = msg->header;
   this->pose_pub_->publish(bboxes);
 }
