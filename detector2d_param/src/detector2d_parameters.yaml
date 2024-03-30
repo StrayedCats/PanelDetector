@@ -3,6 +3,10 @@ detector2d_parameters:
     type: bool
     description: "debug"
     default_value: false
+  model_path:
+    type: string
+    description: "model path"
+    default_value: "./src/yolox_trt/weight/yolox_tiny.trt"
   load_target_plugin:
     type: string
     description: "load target plugin"
