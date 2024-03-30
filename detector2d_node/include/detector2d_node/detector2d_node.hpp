@@ -37,5 +37,7 @@ private:
   std::shared_ptr<detector2d_base::Detector> detector_;
 
   std::shared_ptr<detector2d_parameters::ParamListener> param_listener_;
+
+  detector2d_parameters::Detector2dParam params_;
 };
 }

@@ -33,7 +33,6 @@ public:
   Detection2DArray detect(const cv::Mat &) override;
 
 private:
-  void draw(const cv::Mat &, const CenterPoints &, const std::string &);
   CenterPoints get_center_points(const Contours &);
   CenterPoints merge_center_points(const CenterPoints &, const int &);
 

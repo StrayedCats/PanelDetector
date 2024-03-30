@@ -23,7 +23,7 @@ Detector2dNode::Detector2dNode(const rclcpp::NodeOptions & options)
 {
   this->param_listener_ = std::make_shared<detector2d_parameters::ParamListener>(
     this->get_node_parameters_interface());
-  const auto params = this->param_listener_->get_params();
+  this->params_ = this->param_listener_->get_params();
 
   try {
     this->detector_ = this->detection_loader_.createSharedInstance(
@@ -52,6 +52,14 @@ void Detector2dNode::image_callback(const sensor_msgs::msg::Image::SharedPtr msg
   vision_msgs::msg::Detection2DArray bboxes =
     this->detector_->detect(cv_bridge::toCvShare(msg, "bgr8")->image);
   bboxes.header = msg->header;
+
+  if (this->params_.debug) {
+    cv::imshow("detector", this->draw_bboxes(image, bboxes));
+    auto key = cv::waitKey(1);
+    if (key == 27) {
+      rclcpp::shutdown();
+    }
+  }
   this->pose_pub_->publish(bboxes);
 }
 } // namespace detector2d_node

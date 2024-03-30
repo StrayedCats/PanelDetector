@@ -28,6 +28,7 @@ public:
   virtual vision_msgs::msg::Detection2DArray detect(const cv::Mat & image) = 0;
   virtual ~Detector() {}
 
+private:
   cv::Mat3b draw_bboxes(
       const cv::Mat & frame,
       const vision_msgs::msg::Detection2DArray & boxes)
