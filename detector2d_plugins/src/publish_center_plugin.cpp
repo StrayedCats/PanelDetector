@@ -30,6 +30,8 @@ Detection2DArray PublishCenter::detect(const cv::Mat & image)
   pose.detections.resize(1);
   pose.detections[0].bbox.center.position.x = col / 2;
   pose.detections[0].bbox.center.position.y = row / 2;
+  pose.detections[0].bbox.size_x = 10;
+  pose.detections[0].bbox.size_y = 10;
   return pose;
 }
 }

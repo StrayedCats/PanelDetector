@@ -25,7 +25,6 @@ void PanelSimpleDetector::init(const detector2d_parameters::ParamListener & para
 Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
 {
   auto panel_color_ = this->params_.panel_simple_detector.panel_color;
-  auto debug = this->params_.debug;
 
   cv::Mat3b hsv;
   cv::cvtColor(image, hsv, cv::COLOR_BGR2HSV);
