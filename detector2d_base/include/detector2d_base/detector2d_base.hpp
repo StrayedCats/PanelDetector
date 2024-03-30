@@ -27,7 +27,6 @@ public:
   virtual void init(const detector2d_parameters::ParamListener & param_listener) = 0;
   virtual vision_msgs::msg::Detection2DArray detect(const cv::Mat & image) = 0;
   virtual ~Detector() {}
-
 protected:
   Detector() {}
 };
