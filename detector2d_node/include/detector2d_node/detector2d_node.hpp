@@ -21,6 +21,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <vision_msgs/msg/detection2_d_array.hpp>
+#include <detector2d_param/detector2d_param.hpp>
 
 namespace detector2d_node
 {
@@ -29,6 +30,8 @@ class Detector2dNode : public rclcpp::Node
 public:
   Detector2dNode(const rclcpp::NodeOptions &);
   void image_callback(const sensor_msgs::msg::Image::SharedPtr msg);
+private:
+  cv::Mat3b draw_bboxes(const cv::Mat &, const vision_msgs::msg::Detection2DArray &);
 
 private:
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_sub_;
@@ -37,5 +40,7 @@ private:
   std::shared_ptr<detector2d_base::Detector> detector_;
 
   std::shared_ptr<detector2d_parameters::ParamListener> param_listener_;
+
+  detector2d_parameters::Params params_;
 };
 }

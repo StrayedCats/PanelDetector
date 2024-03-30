@@ -25,7 +25,6 @@ void PanelSimpleDetector::init(const detector2d_parameters::ParamListener & para
 Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
 {
   auto panel_color_ = this->params_.panel_simple_detector.panel_color;
-  auto debug = this->params_.debug;
 
   cv::Mat3b hsv;
   cv::cvtColor(image, hsv, cv::COLOR_BGR2HSV);
@@ -53,10 +52,6 @@ Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
   CenterPoints center_points = get_center_points(contours);
   CenterPoints merged_center_points = merge_center_points(center_points, image.cols);
 
-  if (debug) {
-    draw(image, merged_center_points, "merged_center_points");
-  }
-
   Detection2DArray pose;
   for (auto center_point : merged_center_points) {
     vision_msgs::msg::Detection2D detection;
@@ -68,18 +63,6 @@ Detection2DArray PanelSimpleDetector::detect(const cv::Mat & image)
     pose.detections.push_back(detection);
   }
   return pose;
-}
-
-void PanelSimpleDetector::draw(
-  const cv::Mat & image, const CenterPoints & center_points,
-  const std::string & window_name)
-{
-  cv::Mat3b canvas = image.clone();
-  for (auto center_point : center_points) {
-    cv::circle(canvas, center_point, 2, cv::Scalar(0, 255, 0), 2);
-  }
-  cv::imshow(window_name, canvas);
-  cv::waitKey(1);
 }
 
 CenterPoints PanelSimpleDetector::get_center_points(const Contours & contours)
